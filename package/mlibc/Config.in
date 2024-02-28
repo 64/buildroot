@@ -1,0 +1,20 @@
+config BR2_PACKAGE_MLIBC_ARCH_SUPPORTS
+	bool
+	default y if BR2_aarch64
+	default y if BR2_i386
+	default y if BR2_RISCV_64
+	default y if BR2_x86_64
+	depends on BR2_USE_MMU
+
+config BR2_PACKAGE_MLIBC_SUPPORTS
+	bool
+	default y if BR2_PACKAGE_MLIBC_ARCH_SUPPORTS
+
+config BR2_PACKAGE_MLIBC
+	bool
+	default y
+	depends on BR2_TOOLCHAIN_USES_MLIBC
+	select BR2_PACKAGE_LINUX_HEADERS
+	select BR2_TOOLCHAIN_HAS_SSP if BR2_PACKAGE_HOST_BINUTILS_SUPPORTS_CFI && !BR2_i386
+	help
+	  https://github.com/managarm/mlibc

@@ -53,6 +53,8 @@ ifeq ($(BR2_TOOLCHAIN_USES_UCLIBC),y)
 LIBC = uclibc
 else ifeq ($(BR2_TOOLCHAIN_USES_MUSL),y)
 LIBC = musl
+else ifeq ($(BR2_TOOLCHAIN_USES_MLIBC),y)
+LIBC = mlibc
 else ifeq ($(BR2_TOOLCHAIN_USES_GLIBC),y)
 LIBC = gnu
 else ifeq ($(BR_BUILDING),y)
