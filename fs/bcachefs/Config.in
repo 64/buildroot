@@ -1,0 +1,31 @@
+config BR2_TARGET_ROOTFS_BCACHEFS
+	bool "bcachefs root filesystem"
+	select BR2_PACKAGE_HOST_BCACHEFS_TOOLS
+	help
+	  Build a bcachefs root filesystem. If you enable this option, you
+	  probably want to enable the bcachefs-progs package too.
+
+if BR2_TARGET_ROOTFS_BCACHEFS
+
+config BR2_TARGET_ROOTFS_BCACHEFS_LABEL
+	string "filesystem label"
+
+config BR2_TARGET_ROOTFS_BCACHEFS_SIZE
+	string "filesystem size"
+	default "100m"
+	help
+	  The size of the filesystem image in bytes.
+
+config BR2_TARGET_ROOTFS_BCACHEFS_SIZE_BLOCK
+	string "block size"
+	default "4096"
+	help
+	  Filesystem block size.
+
+config BR2_TARGET_ROOTFS_BCACHEFS_SIZE_NODE
+	string "btree node size"
+	default "262144"
+	help
+	  Btree node size.
+
+endif # BR2_TARGET_ROOTFS_BCACHEFS
